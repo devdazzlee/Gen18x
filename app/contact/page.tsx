@@ -152,45 +152,6 @@ export default function ContactPage() {
                     </div>
                   </CardContent>
                 </Card>
-
-                <Card className="border-gen18x-teal/20 hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-gen18x-teal/10 p-3 rounded-lg">
-                        <MapPin className="h-6 w-6 text-gen18x-teal" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gen18x-navy mb-1">Visit Us</h3>
-                        <p className="text-gray-600 mb-2">Global headquarters</p>
-                        <div className="space-y-1">
-                          <p className="text-gen18x-teal font-medium">123 Technology Drive</p>
-                          <p className="text-gen18x-teal font-medium">Global Business Center</p>
-                          <p className="text-gen18x-teal font-medium">New York, NY 10001</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-gen18x-teal/20 hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-gen18x-teal/10 p-3 rounded-lg">
-                        <Clock className="h-6 w-6 text-gen18x-teal" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gen18x-navy mb-1">Business Hours</h3>
-                        <p className="text-gray-600 mb-2">When we're available</p>
-                        <div className="space-y-1">
-                          <p className="text-gen18x-teal font-medium">Monday - Friday: 9:00 AM - 6:00 PM EST</p>
-                          <p className="text-gen18x-teal font-medium">Saturday: 10:00 AM - 4:00 PM EST</p>
-                          <p className="text-gen18x-teal font-medium">Sunday: Closed</p>
-                          <p className="text-sm text-gray-500 mt-2">24/7 Emergency Support Available</p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
@@ -275,7 +236,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <Badge className="bg-gen18x-light-green/20 text-gen18x-teal border-gen18x-teal/20">
@@ -346,7 +307,7 @@ export default function ContactPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Global Offices */}
       <section className="py-20 bg-gradient-to-br from-gen18x-light-blue/5 to-gen18x-light-green/5">

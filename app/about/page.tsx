@@ -54,8 +54,7 @@ export default function AboutPage() {
                   <h2 className="text-3xl font-heading font-bold text-gen18x-navy">Our Mission</h2>
                 </div>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  To empower businesses, retailers, and individuals with world-class computer products by building a
-                  seamless bridge between global suppliers and local markets.
+                At Gen18x, our mission is to empower businesses, retailers, and individuals by delivering world-class computer systems, IT hardware, and technology solutions. We create a seamless bridge between global suppliers and local markets, ensuring accessibility, affordability, and reliability.
                 </p>
               </div>
 
@@ -64,21 +63,21 @@ export default function AboutPage() {
                   <CheckCircle className="h-6 w-6 text-gen18x-teal mt-1" />
                   <div>
                     <h3 className="font-semibold text-gen18x-navy mb-1">Global Accessibility</h3>
-                    <p className="text-gray-600">Making cutting-edge technology accessible worldwide</p>
+                    <p className="text-gray-600">We make cutting-edge technology products available worldwide, helping businesses and consumers stay ahead in today’s fast-paced digital landscape.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <CheckCircle className="h-6 w-6 text-gen18x-teal mt-1" />
                   <div>
                     <h3 className="font-semibold text-gen18x-navy mb-1">Quality Assurance</h3>
-                    <p className="text-gray-600">Ensuring every product meets the highest standards</p>
+                    <p className="text-gray-600">Every product undergoes strict quality control to guarantee premium performance, durability, and compliance with international standards.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <CheckCircle className="h-6 w-6 text-gen18x-teal mt-1" />
                   <div>
                     <h3 className="font-semibold text-gen18x-navy mb-1">Reliable Partnership</h3>
-                    <p className="text-gray-600">Building long-term relationships based on trust</p>
+                    <p className="text-gray-600">We believe in long-term partnerships built on trust, transparency, and consistent delivery, enabling growth for our clients and suppliers alike.</p>
                   </div>
                 </div>
               </div>

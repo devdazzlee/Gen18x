@@ -10,119 +10,55 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 
 export default function HomePage() {
-  // Hero slider images and state
-  const heroImages = [
+  const heroVideos = [
     {
-      src: "/images/hero-tech-workspace.jpg",
-      alt: "Modern Technology Workspace"
+      src: "/videos/video1.mp4",
+      alt: "Technology Showcase Video 1"
     },
     {
-      src: "/images/laptop-showcase.jpg", 
-      alt: "Premium Business Laptops"
+      src: "/videos/video3.mp4",
+      alt: "Technology Showcase Video 2"
     },
     {
-      src: "/images/computer-components.jpg",
-      alt: "High-Performance Components"
-    },
-    {
-      src: "/images/mobile-devices.jpg",
-      alt: "Latest Mobile Devices"
-    },
-    {
-      src: "/images/global-network.jpg",
-      alt: "Global Technology Network"
+      src: "/videos/video3.mp4",
+      alt: "Technology Showcase Video 3"
     }
   ]
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
 
   // Auto-play functionality
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      setCurrentVideoIndex((prevIndex) =>
+        prevIndex === heroVideos.length - 1 ? 0 : prevIndex + 1
       )
-    }, 4000) // Change image every 4 seconds
+    }, 8000) // Change video every 8 seconds (longer for videos)
 
     return () => clearInterval(interval)
-  }, [heroImages.length])
+  }, [heroVideos.length])
 
-  const goToNextImage = () => {
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+  const goToNextVideo = () => {
+    setCurrentVideoIndex((prevIndex) =>
+      prevIndex === heroVideos.length - 1 ? 0 : prevIndex + 1
     )
   }
 
-  const goToPreviousImage = () => {
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? heroImages.length - 1 : prevIndex - 1
+  const goToPreviousVideo = () => {
+    setCurrentVideoIndex((prevIndex) =>
+      prevIndex === 0 ? heroVideos.length - 1 : prevIndex - 1
     )
   }
 
-  const goToSpecificImage = (index: number) => {
-    setCurrentImageIndex(index)
+  const goToSpecificVideo = (index: number) => {
+    setCurrentVideoIndex(index)
   }
-
   return (
     <div className="min-h-screen">
       <Header />
 
       {/* Hero Banner Slider */}
-      <section className="relative w-full">
-        <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
-          {heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="100vw"
-                className="object-cover object-center"
-                priority={index === 0}
-                quality={90}
-              />
-              <div className="absolute inset-0 bg-black/30"></div>
-            </div>
-          ))}
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={goToPreviousImage}
-            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110 z-10"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={goToNextImage}
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110 z-10"
-            aria-label="Next image"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-
-          {/* Dots Navigation */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSpecificImage(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex 
-                    ? 'bg-white scale-125' 
-                    : 'bg-white/60 hover:bg-white/80'
-                }`}
-                aria-label={`Go to image ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="relative w-full"> <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden"> {heroVideos.map((video, index) => (<div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentVideoIndex ? 'opacity-100' : 'opacity-0'}`} > <video src={video.src} className="w-full h-full object-contain object-center md:object-cover md:object-center" autoPlay muted loop playsInline preload="metadata" /> <div className="absolute inset-0 bg-black/30"></div> </div>))} {/* Navigation Arrows */} <button onClick={goToPreviousVideo} className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110 z-10" aria-label="Previous video" > <ChevronLeft className="h-6 w-6" /> </button> <button onClick={goToNextVideo} className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110 z-10" aria-label="Next video" > <ChevronRight className="h-6 w-6" /> </button> {/* Dots Navigation */} <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10"> {heroVideos.map((_, index) => (<button key={index} onClick={() => goToSpecificVideo(index)} className={`w-4 h-4 rounded-full transition-all duration-300 ${index === currentVideoIndex ? 'bg-white scale-125' : 'bg-white/60 hover:bg-white/80'}`} aria-label={`Go to video ${index + 1}`} />))} </div> </div> </section>
 
       {/* Global Network Section */}
       <section className="py-20 bg-gradient-to-r from-gen18x-light-blue/5 to-gen18x-light-green/5">
@@ -336,9 +272,9 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gen18x-teal/20"></div>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-2">Mobile Devices</h3>
+                <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-2">Computers & Gaming PCs</h3>
                 <p className="text-gray-600 mb-4">
-                  Latest smartphones and tablets from leading manufacturers worldwide.
+                Powerful desktops and gaming PCs built for performance, reliability, and next-level experiences from global manufacturers.
                 </p>
                 <Button className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white">View Collection</Button>
               </CardContent>
@@ -638,10 +574,10 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-balance">
-            Trusted by businesses worldwide
+              Trusted by businesses worldwide
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed text-pretty">
-            Gen18X delivers global-quality tech, competitive pricing, and reliable support you can count on
+              Gen18X delivers global-quality tech, competitive pricing, and reliable support you can count on
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white px-8 py-4 text-lg">

@@ -48,7 +48,7 @@ export default function Header() {
             {/* CTA Button */}
             <div className="hidden lg:block">
               <Link href="/contact">
-                <Button className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 hover:shadow-lg">
+                <Button className="bg-[#FFBD59] text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 hover:shadow-lg">
                   Get Started
                 </Button>
               </Link>
@@ -99,7 +99,7 @@ export default function Header() {
               </Link>
               <div className="px-4 pt-2">
                 <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                  <Button className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white font-medium w-full py-2 rounded-lg transition-all duration-200">
+                  <Button className="bg-[#FFBD59] text-white font-medium w-full py-2 rounded-lg transition-all duration-200">
                     Get Started
                   </Button>
                 </Link>
