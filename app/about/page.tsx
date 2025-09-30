@@ -391,7 +391,7 @@ export default function AboutPage() {
       </section>
 
       {/* Company Timeline */}
-      <section className="py-20 bg-gradient-to-br from-gen18x-light-blue/5 to-gen18x-light-green/5">
+      {/* <section className="py-20 bg-gradient-to-br from-gen18x-light-blue/5 to-gen18x-light-green/5">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center space-y-4 mb-16"
@@ -497,7 +497,7 @@ export default function AboutPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-gen18x-navy text-white">

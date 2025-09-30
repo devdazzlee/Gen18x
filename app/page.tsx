@@ -13,7 +13,7 @@ import { motion } from "framer-motion"
 export default function HomePage() {
   const heroVideos = [
     {
-      src: "/videos/video1.mp4",
+      src: "/videos/video3.mp4",
       alt: "Technology Showcase Video 1",
     },
     {
@@ -286,6 +286,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="lg:col-start-2"
             >
               <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40">
                 <CardContent className="p-8 space-y-4">

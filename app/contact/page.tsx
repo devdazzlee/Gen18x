@@ -187,7 +187,8 @@ export default function ContactPage() {
                           <div className="space-y-1">
                             <p className="text-gen18x-teal font-medium">info@gen18x.com</p>
                             <p className="text-gen18x-teal font-medium">sales@gen18x.com</p>
-                            <p className="text-gen18x-teal font-medium">support@gen18x.com</p>
+                            <p className="text-gen18x-teal font-medium">Mrazi@gen18x.com</p>
+                            <p className="text-gen18x-teal font-medium">Jrazi@gen18x.com</p>
                           </div>
                         </div>
                       </div>
@@ -206,9 +207,8 @@ export default function ContactPage() {
                           <h3 className="font-semibold text-gen18x-navy mb-1">Call Us</h3>
                           <p className="text-gray-600 mb-2">Speak with our team directly</p>
                           <div className="space-y-1">
-                            <p className="text-gen18x-teal font-medium">+1 (555) 123-4567</p>
-                            <p className="text-gen18x-teal font-medium">+1 (555) 123-4568</p>
-                            <p className="text-sm text-gray-500">Mon-Fri: 9AM-6PM EST</p>
+                            <p className="text-gen18x-teal font-medium">+971 56 556 2134</p>
+                            <p className="text-sm text-gray-500">Mon-Fri: 9AM-6PM GST</p>
                           </div>
                         </div>
                       </div>
@@ -349,9 +349,9 @@ export default function ContactPage() {
                     <Building className="h-6 w-6 text-gen18x-teal" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gen18x-navy">North America HQ</h3>
-                    <p className="text-sm text-gray-600">New York, USA</p>
-                    <p className="text-sm text-gen18x-teal">+1 (555) 123-4567</p>
+                    <h3 className="font-semibold text-gen18x-navy">United States</h3>
+                    <p className="text-sm text-gray-600">North America</p>
+                    <p className="text-sm text-gen18x-teal">+971 56 556 2134</p>
                   </div>
                 </CardContent>
               </Card>
@@ -364,9 +364,9 @@ export default function ContactPage() {
                     <Building className="h-6 w-6 text-gen18x-teal" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gen18x-navy">Europe Office</h3>
-                    <p className="text-sm text-gray-600">London, UK</p>
-                    <p className="text-sm text-gen18x-teal">+44 20 7123 4567</p>
+                    <h3 className="font-semibold text-gen18x-navy">Dubai</h3>
+                    <p className="text-sm text-gray-600">Middle East</p>
+                    <p className="text-sm text-gen18x-teal">+971 56 556 2134</p>
                   </div>
                 </CardContent>
               </Card>
@@ -379,9 +379,9 @@ export default function ContactPage() {
                     <Building className="h-6 w-6 text-gen18x-teal" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gen18x-navy">Asia Pacific</h3>
-                    <p className="text-sm text-gray-600">Singapore</p>
-                    <p className="text-sm text-gen18x-teal">+65 6123 4567</p>
+                    <h3 className="font-semibold text-gen18x-navy">Pakistan</h3>
+                    <p className="text-sm text-gray-600">South Asia</p>
+                    <p className="text-sm text-gen18x-teal">+971 56 556 2134</p>
                   </div>
                 </CardContent>
               </Card>
