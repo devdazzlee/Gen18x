@@ -5,122 +5,54 @@ import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Globe, CheckCircle, Laptop, Cpu, Monitor, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import { Globe, CheckCircle, Laptop, Cpu, Monitor, ArrowRight, ChevronDown } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
 export default function HomePage() {
-  const heroVideos = [
-    {
-      src: "/videos/video3.mp4",
-      alt: "Technology Showcase Video 1",
-    },
-    {
-      src: "/videos/video3.mp4",
-      alt: "Technology Showcase Video 2",
-    },
-    {
-      src: "/videos/video3.mp4",
-      alt: "Technology Showcase Video 3",
-    },
-  ]
-
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
-
-  // Auto-play functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideoIndex((prevIndex) => (prevIndex === heroVideos.length - 1 ? 0 : prevIndex + 1))
-    }, 8000) // Change video every 8 seconds (longer for videos)
-
-    return () => clearInterval(interval)
-  }, [heroVideos.length])
-
-  const goToNextVideo = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex === heroVideos.length - 1 ? 0 : prevIndex + 1))
-  }
-
-  const goToPreviousVideo = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex === 0 ? heroVideos.length - 1 : prevIndex - 1))
-  }
-
-  const goToSpecificVideo = (index: number) => {
-    setCurrentVideoIndex(index)
-  }
   return (
     <div className="min-h-screen">
       <Header />
 
-      {/* Hero Banner Slider */}
+      {/* Hero Banner */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="relative w-full"
       >
-        {" "}
-        <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
-          {" "}
-          {heroVideos.map((video, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentVideoIndex ? "opacity-100" : "opacity-0"
-              }`}
+        <div className="relative w-full h-[50vh] min-h-[300px] sm:h-[55vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+          <video
+            src="/videos/video3.mp4"
+            className="w-full h-full object-cover object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+          {/* Scroll Down Arrow */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <button
+              onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+              className="bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110"
+              aria-label="Scroll down"
             >
-              {" "}
-              <video
-                src={video.src}
-                className="w-full h-full object-contain object-center md:object-cover md:object-center"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />{" "}
-              <div className="absolute inset-0 bg-black/30"></div>{" "}
-            </div>
-          ))}
-          {/* Navigation Arrows */}
-          <button
-            onClick={goToPreviousVideo}
-            className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110 z-10"
-            aria-label="Previous video"
-          >
-            {" "}
-            <ChevronLeft className="h-6 w-6" />{" "}
-          </button>{" "}
-          <button
-            onClick={goToNextVideo}
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gen18x-navy p-3 rounded-full shadow-xl transition-all duration-200 hover:scale-110 z-10"
-            aria-label="Next video"
-          >
-            {" "}
-            <ChevronRight className="h-6 w-6" />{" "}
-          </button>{" "}
-          {/* Dots Navigation */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            {" "}
-            {heroVideos.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSpecificVideo(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                  index === currentVideoIndex ? "bg-white scale-125" : "bg-white/60 hover:bg-white/80"
-                }`}
-                aria-label={`Go to video ${index + 1}`}
-              />
-            ))}{" "}
-          </div>{" "}
-        </div>{" "}
+              <ChevronDown className="h-6 w-6" />
+            </button>
+          </motion.div>
+        </div>
       </motion.section>
 
       {/* Global Network Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
         className="py-20 bg-gradient-to-r from-gen18x-light-blue/5 to-gen18x-light-green/5"
       >
@@ -173,7 +105,7 @@ export default function HomePage() {
       <motion.section
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
         className="py-20 bg-white"
       >
@@ -194,7 +126,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40">
@@ -224,7 +156,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40">
@@ -254,7 +186,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40">
@@ -284,7 +216,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="lg:col-start-2"
             >
@@ -321,7 +253,7 @@ export default function HomePage() {
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
         className="py-20 bg-gradient-to-br from-gen18x-light-blue/5 to-gen18x-light-green/5"
       >
@@ -340,7 +272,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -366,7 +298,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -392,7 +324,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -418,7 +350,7 @@ export default function HomePage() {
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
         className="py-20 bg-white"
       >
@@ -438,7 +370,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="flex items-start gap-4"
               >
@@ -459,7 +391,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex items-start gap-4"
               >
@@ -480,7 +412,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="flex items-start gap-4"
               >
@@ -501,7 +433,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="flex items-start gap-4"
               >
@@ -524,7 +456,7 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.7 }}
               >
                 <Image
@@ -540,7 +472,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <Card className="bg-gen18x-teal text-white">
@@ -553,7 +485,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <Card className="bg-gen18x-navy text-white">
@@ -566,7 +498,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <Card className="bg-gen18x-light-blue text-white">
@@ -579,7 +511,7 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
                   <Card className="bg-gen18x-light-green text-white">
@@ -602,7 +534,7 @@ export default function HomePage() {
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8 }}
         className="py-20 bg-white"
       >

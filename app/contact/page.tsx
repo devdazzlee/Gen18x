@@ -82,7 +82,7 @@ export default function ContactPage() {
         className="py-20 bg-white"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
       >
         <div className="container mx-auto px-4">
@@ -207,7 +207,7 @@ export default function ContactPage() {
                           <div className="space-y-1">  
                             <p className="text-gen18x-teal font-medium">+971 56 556 2134</p>
                             <p className="text-gen18x-teal font-medium">+92 328 820 0999</p>
-                            <p className="text-sm text-gray-500">Mon-Fri: 9AM-6PM GST</p>
+                            {/* <p className="text-sm text-gray-500">Mon-Fri: 9AM-6PM GST</p> */}
                           </div>
                         </div>
                       </div>
@@ -225,7 +225,7 @@ export default function ContactPage() {
         className="py-20 bg-gradient-to-br from-gen18x-light-blue/5 to-gen18x-light-green/5"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
       >
         <div className="container mx-auto px-4">
@@ -246,15 +246,15 @@ export default function ContactPage() {
           </div>
 
           <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="bg-white border-gen18x-teal/20 hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-8 text-center space-y-6">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full bg-white border-gen18x-teal/20 hover:shadow-xl transition-all duration-300 group">
+                <CardContent className="h-full p-8 text-center space-y-6 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <Headphones className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
-                  <div>
+                  <div className="flex-grow flex flex-col">
                     <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-3">24/7 Support</h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">
+                    <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
                       Round-the-clock technical support and customer service for urgent inquiries and existing orders.
                     </p>
                     <Button
@@ -268,15 +268,15 @@ export default function ContactPage() {
               </Card>
             </motion.div>
 
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="bg-white border-gen18x-teal/20 hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-8 text-center space-y-6">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full bg-white border-gen18x-teal/20 hover:shadow-xl transition-all duration-300 group">
+                <CardContent className="h-full p-8 text-center space-y-6 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <Users className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
-                  <div>
+                  <div className="flex-grow flex flex-col">
                     <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-3">Schedule Consultation</h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">
+                    <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
                       Book a personalized consultation with our technology experts to discuss your specific requirements
                       and solutions.
                     </p>
@@ -291,15 +291,15 @@ export default function ContactPage() {
               </Card>
             </motion.div>
 
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="bg-white border-gen18x-teal/20 hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-8 text-center space-y-6">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full bg-white border-gen18x-teal/20 hover:shadow-xl transition-all duration-300 group">
+                <CardContent className="h-full p-8 text-center space-y-6 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <MessageSquare className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
-                  <div>
+                  <div className="flex-grow flex flex-col">
                     <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-3">Live Chat</h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">
+                    <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
                       Start an instant conversation with our support team for quick questions and real-time assistance.
                     </p>
                     <Button
@@ -321,7 +321,7 @@ export default function ContactPage() {
         className="py-20 bg-gradient-to-br from-gen18x-light-blue/5 to-gen18x-light-green/5"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
       >
         <div className="container mx-auto px-4">
@@ -350,7 +350,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gen18x-navy">United States</h3>
                     <p className="text-sm text-gray-600">North America</p>
-                    <p className="text-sm text-gen18x-teal">+971 56 556 2134</p>
+                    {/* <p className="text-sm text-gen18x-teal">+971 56 556 2134</p> */}
                   </div>
                 </CardContent>
               </Card>

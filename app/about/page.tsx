@@ -53,7 +53,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div variants={itemVariants}>
               <Badge className="bg-gen18x-teal/10 text-gen18x-teal border-gen18x-teal/20">
@@ -83,7 +83,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div className="space-y-8" variants={itemVariants}>
               <div className="space-y-4">
@@ -175,7 +175,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div variants={itemVariants}>
               <Badge className="bg-gen18x-teal/10 text-gen18x-teal border-gen18x-teal/20">Our Core Values</Badge>
@@ -193,20 +193,20 @@ export default function AboutPage() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
-                <CardContent className="p-8 text-center space-y-4">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
+                <CardContent className="h-full p-8 text-center space-y-4 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <Shield className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy">Trust First</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-grow">
                     We believe strong partnerships are built on transparency, honesty, and reliable communication at
                     every step.
                   </p>
@@ -214,14 +214,14 @@ export default function AboutPage() {
               </Card>
             </motion.div>
 
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
-                <CardContent className="p-8 text-center space-y-4">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
+                <CardContent className="h-full p-8 text-center space-y-4 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <Globe className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy">Global Reach</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-grow">
                     From sourcing to delivery, we bring the world closer to you through our extensive international
                     network.
                   </p>
@@ -229,28 +229,28 @@ export default function AboutPage() {
               </Card>
             </motion.div>
 
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
-                <CardContent className="p-8 text-center space-y-4">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
+                <CardContent className="h-full p-8 text-center space-y-4 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <Zap className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy">Innovation & Technology</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-grow">
                     Staying ahead in a fast-moving digital era by embracing new technologies and innovative solutions.
                   </p>
                 </CardContent>
               </Card>
             </motion.div>
 
-            <motion.div variants={cardVariants} whileHover="hover">
-              <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
-                <CardContent className="p-8 text-center space-y-4">
+            <motion.div variants={cardVariants} whileHover="hover" className="h-full">
+              <Card className="h-full group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40 bg-white">
+                <CardContent className="h-full p-8 text-center space-y-4 flex flex-col">
                   <div className="bg-gen18x-teal/10 p-4 rounded-full w-fit mx-auto group-hover:bg-gen18x-teal group-hover:text-white transition-colors">
                     <TrendingUp className="h-8 w-8 text-gen18x-teal group-hover:text-white" />
                   </div>
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy">Customer Success</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-grow">
                     Your growth is our growth. We measure our success by the success of our partners and clients.
                   </p>
                 </CardContent>
@@ -268,7 +268,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div variants={itemVariants}>
               <Badge className="bg-gen18x-light-green/20 text-gen18x-teal border-gen18x-teal/20">
@@ -292,7 +292,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div variants={cardVariants}>
               <Card className="bg-gradient-to-br from-gen18x-light-blue/10 to-white border-gen18x-teal/20">
@@ -398,7 +398,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.div variants={itemVariants}>
               <Badge className="bg-gen18x-teal/10 text-gen18x-teal border-gen18x-teal/20">Our Journey</Badge>
@@ -421,7 +421,7 @@ export default function AboutPage() {
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <motion.div className="flex items-start gap-6" variants={itemVariants}>
                 <div className="bg-gen18x-teal p-3 rounded-full">
@@ -507,7 +507,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h2 className="text-4xl md:text-5xl font-heading font-bold text-balance" variants={itemVariants}>
               Ready to Partner with Gen18X?

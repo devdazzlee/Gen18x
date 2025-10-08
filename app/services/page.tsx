@@ -109,7 +109,7 @@ export default function ServicesPage() {
             className="max-w-4xl mx-auto text-center space-y-8"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={containerVariants}
           >
             <motion.div variants={slideInFromTop}>
@@ -292,7 +292,7 @@ export default function ServicesPage() {
               </Card>
             </motion.div>
 
-            <motion.div variants={mainServiceCardVariants} whileHover="hover">
+            <motion.div variants={mainServiceCardVariants} whileHover="hover" className="lg:col-start-2">
               <Card className="group hover:shadow-xl transition-all duration-300 border-gen18x-teal/20 hover:border-gen18x-teal/40">
                 <motion.div variants={mainServiceCardContentVariants}>
                   <CardContent className="p-8 space-y-6">
@@ -439,7 +439,7 @@ export default function ServicesPage() {
             className="text-center space-y-4 mb-16"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={containerVariants}
           >
             <motion.div variants={slideInFromTop}>
@@ -526,7 +526,7 @@ export default function ServicesPage() {
             className="max-w-4xl mx-auto space-y-8"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={containerVariants}
           >
             <motion.h2 className="text-4xl md:text-5xl font-heading font-bold text-balance" variants={slideInFromLeft}>
