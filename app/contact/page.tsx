@@ -186,8 +186,6 @@ export default function ContactPage() {
                           <p className="text-gray-600 mb-2">Send us an email anytime</p>
                           <div className="space-y-1">
                             <p className="text-gen18x-teal font-medium">info@gen18x.com</p>
-                            <p className="text-gen18x-teal font-medium">sales@gen18x.com</p>
-                            <p className="text-gen18x-teal font-medium">Mrazi@gen18x.com</p>
                             <p className="text-gen18x-teal font-medium">Jrazi@gen18x.com</p>
                           </div>
                         </div>
