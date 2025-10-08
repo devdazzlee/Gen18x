@@ -204,8 +204,9 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-semibold text-gen18x-navy mb-1">Call Us</h3>
                           <p className="text-gray-600 mb-2">Speak with our team directly</p>
-                          <div className="space-y-1">
+                          <div className="space-y-1">  
                             <p className="text-gen18x-teal font-medium">+971 56 556 2134</p>
+                            <p className="text-gen18x-teal font-medium">+92 328 820 0999</p>
                             <p className="text-sm text-gray-500">Mon-Fri: 9AM-6PM GST</p>
                           </div>
                         </div>
