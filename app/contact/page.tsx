@@ -380,7 +380,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gen18x-navy">Pakistan</h3>
                     <p className="text-sm text-gray-600">South Asia</p>
-                    <p className="text-sm text-gen18x-teal">+971 56 556 2134</p>
+                    <p className="text-sm text-gen18x-teal">+92 328 820 0999</p>
                   </div>
                 </CardContent>
               </Card>
