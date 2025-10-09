@@ -12,6 +12,7 @@ import { Mail, Phone, MessageSquare, Send, Users, Headphones, Building, Loader2 
 import { useState } from "react"
 import { toast } from "sonner"
 import { z } from "zod"
+import { getApiUrl, API_CONFIG } from "@/lib/config"
 
 // Validation schema
 const contactSchema = z.object({
@@ -94,8 +95,8 @@ export default function ContactPage() {
       // Validate form data
       const validatedData = contactSchema.parse(formData)
 
-      // Send email
-      const response = await fetch('/api/send-email', {
+      // Send email to backend API
+      const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SEND_EMAIL), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
