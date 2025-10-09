@@ -342,8 +342,8 @@ export default function ContactPage() {
                           <h3 className="font-semibold text-gen18x-navy mb-1">Email Us</h3>
                           <p className="text-gray-600 mb-2">Send us an email anytime</p>
                           <div className="space-y-1">
-                            <p className="text-gen18x-teal font-medium">info@gen18x.com</p>
-                            <p className="text-gen18x-teal font-medium">Jrazi@gen18x.com</p>
+                            <a href="mailto:info@gen18x.com" className="text-gen18x-teal font-medium hover:underline block">info@gen18x.com</a>
+                            <a href="mailto:Jrazi@gen18x.com" className="text-gen18x-teal font-medium hover:underline block">Jrazi@gen18x.com</a>
                           </div>
                         </div>
                       </div>
@@ -362,8 +362,8 @@ export default function ContactPage() {
                           <h3 className="font-semibold text-gen18x-navy mb-1">Call Us</h3>
                           <p className="text-gray-600 mb-2">Speak with our team directly</p>
                           <div className="space-y-1">  
-                            <p className="text-gen18x-teal font-medium">+971 56 556 2134</p>
-                            <p className="text-gen18x-teal font-medium">+92 328 820 0999</p>
+                            <a href="tel:+971565562134" className="text-gen18x-teal font-medium hover:underline block">+971 56 556 2134</a>
+                            <a href="tel:+923288200999" className="text-gen18x-teal font-medium hover:underline block">+92 328 820 0999</a>
                             {/* <p className="text-sm text-gray-500">Mon-Fri: 9AM-6PM GST</p> */}
                           </div>
                         </div>
@@ -528,7 +528,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gen18x-navy">Dubai</h3>
                     <p className="text-sm text-gray-600">Middle East</p>
-                    <p className="text-sm text-gen18x-teal">+971 56 556 2134</p>
+                    <a href="tel:+971565562134" className="text-sm text-gen18x-teal hover:underline block">+971 56 556 2134</a>
                   </div>
                 </CardContent>
               </Card>
@@ -543,7 +543,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gen18x-navy">Pakistan</h3>
                     <p className="text-sm text-gray-600">South Asia</p>
-                    <p className="text-sm text-gen18x-teal">+92 328 820 0999</p>
+                    <a href="tel:+923288200999" className="text-sm text-gen18x-teal hover:underline block">+92 328 820 0999</a>
                   </div>
                 </CardContent>
               </Card>
