@@ -8,7 +8,21 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MessageSquare, Send, Users, Headphones, Building } from "lucide-react"
+import { Mail, Phone, MessageSquare, Send, Users, Headphones, Building, Loader2 } from "lucide-react"
+import { useState } from "react"
+import { toast } from "sonner"
+import { z } from "zod"
+
+// Validation schema
+const contactSchema = z.object({
+  firstName: z.string().min(2, 'First name must be at least 2 characters'),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  company: z.string().min(2, 'Company name must be at least 2 characters'),
+  phone: z.string().min(10, 'Phone number must be at least 10 characters'),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+})
 
 export default function ContactPage() {
   const containerVariants = {
@@ -45,6 +59,91 @@ export default function ContactPage() {
   const inputVariants = {
     hidden: { opacity: 0, x: -50 }, // Increased initial x offset
     visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }, // Smoother transition
+  }
+
+  // Form state
+  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    phone: '',
+    subject: '',
+    message: '',
+  })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  // Handle input change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }))
+    }
+  }
+
+  // Handle form submit
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setErrors({})
+
+    try {
+      // Validate form data
+      const validatedData = contactSchema.parse(formData)
+
+      // Send email
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(validatedData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      // Success
+      toast.success('Message sent successfully!', {
+        description: 'We\'ll get back to you as soon as possible.',
+      })
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        company: '',
+        phone: '',
+        subject: '',
+        message: '',
+      })
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Validation errors
+        const fieldErrors: Record<string, string> = {}
+        error.issues.forEach((issue: z.ZodIssue) => {
+          if (issue.path[0]) {
+            fieldErrors[issue.path[0] as string] = issue.message
+          }
+        })
+        setErrors(fieldErrors)
+        toast.error('Please check the form for errors')
+      } else {
+        // API or network errors
+        toast.error('Failed to send message', {
+          description: 'Please try again or contact us directly via email or phone.',
+        })
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -100,61 +199,118 @@ export default function ContactPage() {
               <motion.div variants={slideInFromLeft} whileHover="hover">
                 <Card className="border-gen18x-teal/20">
                   <CardContent className="p-8">
-                    <motion.form className="space-y-6" variants={containerVariants}>
+                    <motion.form onSubmit={handleSubmit} className="space-y-6" variants={containerVariants}>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <motion.div variants={inputVariants} className="space-y-2">
-                          <label className="text-sm font-medium text-gen18x-navy">First Name</label>
-                          <Input placeholder="John" className="border-gen18x-teal/20 focus:border-gen18x-teal" />
+                          <label className="text-sm font-medium text-gen18x-navy">First Name *</label>
+                          <Input 
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            placeholder="John" 
+                            className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.firstName ? 'border-red-500' : ''}`}
+                            disabled={isLoading}
+                          />
+                          {errors.firstName && <p className="text-xs text-red-500">{errors.firstName}</p>}
                         </motion.div>
                         <motion.div variants={inputVariants} className="space-y-2">
-                          <label className="text-sm font-medium text-gen18x-navy">Last Name</label>
-                          <Input placeholder="Doe" className="border-gen18x-teal/20 focus:border-gen18x-teal" />
+                          <label className="text-sm font-medium text-gen18x-navy">Last Name *</label>
+                          <Input 
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            placeholder="Doe" 
+                            className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.lastName ? 'border-red-500' : ''}`}
+                            disabled={isLoading}
+                          />
+                          {errors.lastName && <p className="text-xs text-red-500">{errors.lastName}</p>}
                         </motion.div>
                       </div>
 
                       <motion.div variants={inputVariants} className="space-y-2">
-                        <label className="text-sm font-medium text-gen18x-navy">Email Address</label>
+                        <label className="text-sm font-medium text-gen18x-navy">Email Address *</label>
                         <Input
                           type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
                           placeholder="john@company.com"
-                          className="border-gen18x-teal/20 focus:border-gen18x-teal"
+                          className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.email ? 'border-red-500' : ''}`}
+                          disabled={isLoading}
                         />
+                        {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
                       </motion.div>
 
                       <motion.div variants={inputVariants} className="space-y-2">
-                        <label className="text-sm font-medium text-gen18x-navy">Company Name</label>
-                        <Input placeholder="Your Company" className="border-gen18x-teal/20 focus:border-gen18x-teal" />
+                        <label className="text-sm font-medium text-gen18x-navy">Company Name *</label>
+                        <Input 
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          placeholder="Your Company" 
+                          className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.company ? 'border-red-500' : ''}`}
+                          disabled={isLoading}
+                        />
+                        {errors.company && <p className="text-xs text-red-500">{errors.company}</p>}
                       </motion.div>
 
                       <motion.div variants={inputVariants} className="space-y-2">
-                        <label className="text-sm font-medium text-gen18x-navy">Phone Number</label>
+                        <label className="text-sm font-medium text-gen18x-navy">Phone Number *</label>
                         <Input
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
                           placeholder="+1 (555) 123-4567"
-                          className="border-gen18x-teal/20 focus:border-gen18x-teal"
+                          className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.phone ? 'border-red-500' : ''}`}
+                          disabled={isLoading}
                         />
+                        {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
                       </motion.div>
 
                       <motion.div variants={inputVariants} className="space-y-2">
-                        <label className="text-sm font-medium text-gen18x-navy">Subject</label>
+                        <label className="text-sm font-medium text-gen18x-navy">Subject *</label>
                         <Input
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
                           placeholder="Technology Sourcing Inquiry"
-                          className="border-gen18x-teal/20 focus:border-gen18x-teal"
+                          className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.subject ? 'border-red-500' : ''}`}
+                          disabled={isLoading}
                         />
+                        {errors.subject && <p className="text-xs text-red-500">{errors.subject}</p>}
                       </motion.div>
 
                       <motion.div variants={inputVariants} className="space-y-2">
-                        <label className="text-sm font-medium text-gen18x-navy">Message</label>
+                        <label className="text-sm font-medium text-gen18x-navy">Message *</label>
                         <Textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
                           placeholder="Tell us about your technology needs, quantity requirements, and timeline..."
                           rows={5}
-                          className="border-gen18x-teal/20 focus:border-gen18x-teal"
+                          className={`border-gen18x-teal/20 focus:border-gen18x-teal ${errors.message ? 'border-red-500' : ''}`}
+                          disabled={isLoading}
                         />
+                        {errors.message && <p className="text-xs text-red-500">{errors.message}</p>}
                       </motion.div>
 
                       <motion.div variants={itemVariants}>
-                        <Button className="w-full bg-gen18x-teal hover:bg-gen18x-teal/90 text-white py-3">
-                          Send Message
-                          <Send className="ml-2 h-4 w-4" />
+                        <Button 
+                          type="submit"
+                          disabled={isLoading}
+                          className="w-full bg-gen18x-teal hover:bg-gen18x-teal/90 hover:text-white text-white py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {isLoading ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              Send Message
+                              <Send className="ml-2 h-4 w-4" />
+                            </>
+                          )}
                         </Button>
                       </motion.div>
                     </motion.form>
@@ -257,12 +413,14 @@ export default function ContactPage() {
                     <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
                       Round-the-clock technical support and customer service for urgent inquiries and existing orders.
                     </p>
-                    <Button
-                      variant="outline"
-                      className="border-gen18x-teal text-gen18x-teal hover:bg-gen18x-teal hover:text-white bg-transparent"
-                    >
-                      Get Immediate Help
-                    </Button>
+                    <a href="tel:+971565562134" className="block">
+                      <Button
+                        variant="outline"
+                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full transition-all hover:!bg-gen18x-teal hover:!text-white hover:!border-gen18x-teal"
+                      >
+                        <span className="text-inherit">Call Now</span>
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -280,12 +438,14 @@ export default function ContactPage() {
                       Book a personalized consultation with our technology experts to discuss your specific requirements
                       and solutions.
                     </p>
-                    <Button
-                      variant="outline"
-                      className="border-gen18x-teal text-gen18x-teal hover:bg-gen18x-teal hover:text-white bg-transparent"
-                    >
-                      Book Meeting
-                    </Button>
+                    <a href="mailto:info@gen18x.com?subject=Schedule Consultation" className="block">
+                      <Button
+                        variant="outline"
+                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full transition-all hover:!bg-gen18x-teal hover:!text-white hover:!border-gen18x-teal"
+                      >
+                        <span className="text-inherit">Email Us</span>
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -302,12 +462,14 @@ export default function ContactPage() {
                     <p className="text-gray-600 leading-relaxed mb-4 flex-grow">
                       Start an instant conversation with our support team for quick questions and real-time assistance.
                     </p>
-                    <Button
-                      variant="outline"
-                      className="border-gen18x-teal text-gen18x-teal hover:bg-gen18x-teal hover:text-white bg-transparent"
-                    >
-                      Start Chat
-                    </Button>
+                    <a href="mailto:info@gen18x.com?subject=Live Chat Inquiry" className="block">
+                      <Button
+                        variant="outline"
+                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full transition-all hover:!bg-gen18x-teal hover:!text-white hover:!border-gen18x-teal"
+                      >
+                        <span className="text-inherit">Send Message</span>
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>

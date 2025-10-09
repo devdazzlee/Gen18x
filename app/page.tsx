@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Globe, CheckCircle, Laptop, Cpu, Monitor, ArrowRight, ChevronDown } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 
 export default function HomePage() {
@@ -146,9 +147,6 @@ export default function HomePage() {
                     <li>• Extended warranty options</li>
                     <li>• White-glove deployment services</li>
                   </ul>
-                  <div className="flex items-center text-gen18x-teal font-medium hover:text-gen18x-navy transition-colors cursor-pointer">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -176,9 +174,6 @@ export default function HomePage() {
                     <li>• Professional GPU solutions</li>
                     <li>• Bulk pricing and priority allocation</li>
                   </ul>
-                  <div className="flex items-center text-gen18x-teal font-medium hover:text-gen18x-navy transition-colors cursor-pointer">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -206,9 +201,6 @@ export default function HomePage() {
                     <li>• Real-time shipment tracking</li>
                     <li>• Quality inspection services</li>
                   </ul>
-                  <div className="flex items-center text-gen18x-teal font-medium hover:text-gen18x-navy transition-colors cursor-pointer">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -239,9 +231,6 @@ export default function HomePage() {
                     <li>• Digital signage solutions</li>
                     <li>• Multi-monitor configurations</li>
                   </ul>
-                  <div className="flex items-center text-gen18x-teal font-medium hover:text-gen18x-navy transition-colors cursor-pointer">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -274,8 +263,9 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
+              className="h-full"
             >
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
+              <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
                 <div className="relative h-48">
                   <Image
                     src="/images/laptop-showcase.jpg"
@@ -285,12 +275,11 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gen18x-teal/20"></div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-2">Business Laptops</h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 flex-grow">
                     Premium laptops for professional use with enterprise-grade security and performance.
                   </p>
-                  <Button className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white">View Collection</Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -300,8 +289,9 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="h-full"
             >
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
+              <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
                 <div className="relative h-48">
                   <Image
                     src="/images/computer-components.jpg"
@@ -311,12 +301,11 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gen18x-teal/20"></div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-2">PC Components</h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 flex-grow">
                     Latest processors, graphics cards, and memory modules for high-performance systems.
                   </p>
-                  <Button className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white">View Collection</Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -326,19 +315,19 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
+              className="h-full"
             >
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
+              <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
                 <div className="relative h-48">
-                  <Image src="/images/mobile-devices.jpg" alt="Mobile Devices" fill className="object-cover" />
+                  <Image src="/images/mobile.jpg" alt="Mobile Devices" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gen18x-teal/20"></div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-heading font-semibold text-gen18x-navy mb-2">Computers & Gaming PCs</h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 flex-grow">
                     Powerful desktops and gaming PCs built for performance, reliability, and next-level experiences from
                     global manufacturers.
                   </p>
-                  <Button className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white">View Collection</Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -602,10 +591,12 @@ export default function HomePage() {
               Gen18X delivers global-quality tech, competitive pricing, and reliable support you can count on
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white px-8 py-4 text-lg">
-                Get Started Today
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link href="/contact">
+                <Button size="lg" className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white px-8 py-4 text-lg">
+                  Get Started Today
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

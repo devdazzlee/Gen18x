@@ -4,6 +4,7 @@ import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 import {
   Laptop,
   Cpu,
@@ -179,12 +180,6 @@ export default function ServicesPage() {
                         </motion.li>
                       </motion.ul>
                     </div>
-                    <motion.div variants={mainServiceCardItemVariants}>
-                      <Button variant="outline" className="w-full border-gen18x-teal text-gen18x-teal bg-transparent">
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </motion.div>
                   </CardContent>
                 </motion.div>
               </Card>
@@ -230,12 +225,6 @@ export default function ServicesPage() {
                         </motion.li>
                       </motion.ul>
                     </div>
-                    <motion.div variants={mainServiceCardItemVariants}>
-                      <Button variant="outline" className="w-full border-gen18x-teal text-gen18x-teal bg-transparent">
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </motion.div>
                   </CardContent>
                 </motion.div>
               </Card>
@@ -281,12 +270,6 @@ export default function ServicesPage() {
                         </motion.li>
                       </motion.ul>
                     </div>
-                    <motion.div variants={mainServiceCardItemVariants}>
-                      <Button variant="outline" className="w-full border-gen18x-teal text-gen18x-teal bg-transparent">
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </motion.div>
                   </CardContent>
                 </motion.div>
               </Card>
@@ -332,12 +315,6 @@ export default function ServicesPage() {
                         </motion.li>
                       </motion.ul>
                     </div>
-                    <motion.div variants={mainServiceCardItemVariants}>
-                      <Button variant="outline" className="w-full border-gen18x-teal text-gen18x-teal bg-transparent">
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </motion.div>
                   </CardContent>
                 </motion.div>
               </Card>
@@ -538,19 +515,12 @@ export default function ServicesPage() {
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={containerVariants}>
               <motion.div variants={slideInFromBottom}>
-                <Button size="lg" className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white px-8 py-4 text-lg">
-                  Request Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </motion.div>
-              <motion.div variants={slideInFromBottom}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-gen18x-navy px-8 py-4 text-lg bg-transparent"
-                >
-                  View Catalog
-                </Button>
+                <Link href="/contact">
+                  <Button size="lg" className="bg-gen18x-teal hover:bg-gen18x-teal/90 text-white px-8 py-4 text-lg">
+                    Request Quote
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
