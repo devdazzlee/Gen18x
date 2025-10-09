@@ -417,7 +417,7 @@ export default function ContactPage() {
                     <a href="tel:+971565562134" className="block">
                       <Button
                         variant="outline"
-                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full transition-all hover:!bg-gen18x-teal hover:!text-white hover:!border-gen18x-teal"
+                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full"
                       >
                         <span className="text-inherit">Call Now</span>
                       </Button>
@@ -442,7 +442,7 @@ export default function ContactPage() {
                     <a href="mailto:info@gen18x.com?subject=Schedule Consultation" className="block">
                       <Button
                         variant="outline"
-                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full transition-all hover:!bg-gen18x-teal hover:!text-white hover:!border-gen18x-teal"
+                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full"
                       >
                         <span className="text-inherit">Email Us</span>
                       </Button>
@@ -466,7 +466,7 @@ export default function ContactPage() {
                     <a href="mailto:info@gen18x.com?subject=Live Chat Inquiry" className="block">
                       <Button
                         variant="outline"
-                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full transition-all hover:!bg-gen18x-teal hover:!text-white hover:!border-gen18x-teal"
+                        className="border-gen18x-teal text-gen18x-teal bg-transparent w-full"
                       >
                         <span className="text-inherit">Send Message</span>
                       </Button>
